@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Result, ok, fail, MetodoPagamento, isValidEmail } from "./types.ts";
 import { Prodotto } from "./Prodotto";
 
@@ -39,5 +40,38 @@ export class Cliente {
       );
     }
     return ok(`Ordine completato per ${this.nome} ${this.cognome}.`);
+=======
+import { ICliente, IProdotto } from "./interfaces";
+
+export class Cliente implements ICliente {
+  nome: string;
+  cognome: string;
+  email: string;
+  metodoPagamentoPreferito: string;
+
+  constructor(
+    nome: string,
+    cognome: string,
+    email: string,
+    metodoPagamentoPreferito: string
+  ) {
+    this.nome = nome;
+    this.cognome = cognome;
+    this.email = email;
+    this.metodoPagamentoPreferito = metodoPagamentoPreferito;
+  }
+
+  ordinaProdotto(prodotto: IProdotto): void {
+    if (prodotto.stato === "disponibile") {
+      prodotto.assegnaCliente(this);
+      console.log(
+        `${this.nome} ${this.cognome} ha ordinato il prodotto ${prodotto.id}`
+      );
+    } else {
+      console.log(
+        `Il prodotto ${prodotto.id} non è disponibile`
+      );
+    }
+>>>>>>> fed1e8a9519fd46678f98b50cd48ced00b2708ea
   }
 }
